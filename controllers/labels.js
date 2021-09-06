@@ -1,7 +1,7 @@
 const api = require('../api');
 
 module.exports = {
-  getLists: async (req, res) => {
+  getLabels: async (req, res) => {
     const response = await api.get(`boards/${process.env.REACT_APP_BOARD_ID}/labels`)
       
     res.json(response.data.map((item) => ({
