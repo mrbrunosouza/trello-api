@@ -1,15 +1,14 @@
 const express = require('express');
-const api = require('./api');
 
 const routes = express.Router();
+const listsController = require('./controllers/lists');
+const cardsController = require('./controllers/cards');
+const labelsController = require('./controllers/labels');
 
-routes.get('/lists', async (req, res) => {
-  const response = await api.get(`boards/${process.env.REACT_APP_BOARD_ID}/lists`)
-    
-  res.json(response.data.map((item) => ({
-    id: item.id,
-    name: item.name,
-  })))
-});
+routes.get('/lists', listsController.getLists);
+
+routes.post('/cards', cardsController.postCards);
+
+routes.get('/labels', labelsController.getLabels);
 
 module.exports = routes;
