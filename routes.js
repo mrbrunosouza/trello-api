@@ -4,7 +4,7 @@ const api = require('./api');
 const routes = express.Router();
 
 routes.get('/lists', async (req, res) => {
-  const response = await api.get(`boards/6117c125cbd75b52ba86ecae/lists`)
+  const response = await api.get(`boards/${process.env.REACT_APP_BOARD_ID}/lists`)
     
   res.json(response.data.map((item) => ({
     id: item.id,
